@@ -8,7 +8,7 @@ CREATE TABLE customer_requests (
     item_name VARCHAR(30) NOT NULL,
     estimated_weight INT NOT NULL,
     item_location VARCHAR(100) NOT NULL,
-    request_status BOOLEAN DEFAULT FALSE,
+    request_status NOT NULL BOOLEAN DEFAULT FALSE,
     drivers_id INT
 );
 
