@@ -1,4 +1,4 @@
-// Dependcies
+// Dependencies
 var express = require("express");
 var PORT = process.env.PORT || 8080;
 var app = express();
@@ -16,8 +16,7 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// router. To finish according to file name
-//var routes = require("./controllers/burgers_controller.js");
+var routes = require("./controllers/maincontroller.js");
 
 app.use(routes);
 
