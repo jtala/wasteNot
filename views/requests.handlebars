@@ -1,21 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">Customer Input Page</title>
+	<script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
+<body>
 <button onclick="window.location.href = '/home';">Home</button>
-<br><br>
-<h2>Make new Request</h2>
-<form>
-  Name:<br>
-  <input type="text" name="name" >
-  <br>
-  Location:<br>
-  <input type="text" name="location" >
-  <br>
-  Item:<br>
-  <input type="text" name="item" >
-  <br>
-  Estimated weight:<br>
-  <input type="text" name="weight" >  
-  <br><br>
-  <input type="submit" value="Submit" >
-</form> 
+<br>
+<br>
+<form id="cms">
+    <div class="form-group">
+        <label for="customer_name">Customer Name</label>
+        <input placeholder="Jonathan T" type="text" class="form-control" id="customer_name">
+        <br />
+        <label for="item_name">Item Name</label>
+        <input placeholder="Recyclables" type="text" class="form-control" id="item_name">
+        <br />
+        <label for="estimated_weight">Estimated Weight (lbs): </label>
+        <input placeholder="15 lbs" type="text" class="form-control" id="estimated_weight">
+        <br />
+        <label for="item_location">Item Location: </label>
+        <input placeholder="Post Title" type="text" class="form-control" id="item_location">
+
+        <br/>
+        <button type="submit" class="btn btn-success submit">Submit</button>
+    </div>
+</form>
+
+<script>
+ $(document).ready(function() {
+// jQuery references.
+// "c" short for Customer.
+var cNameInput = $("#customer_name");
+var cItemName = $("#item_name");
+var cEstWeight = $("#estimated_weight");
+var cItemLocation = $("#item_location");
+var cmsForm = $("#cms");
+
+
+// On click listener for when customer submits form.
+$(cmsForm).on("submit", handleFormSubmit);
+
+// Function prevents empty slots, creates an object with customer's data and sends to backend.
+function handleFormSubmit(event) {
+    event.preventDefault();
+    // Will not submit unless every field has data.
+    if (!cNameInput.val().trim() || !cItemName.val().trim() || !cEstWeight.val() || !cItemLocation.val()  ) {
+      return;
+    }
+    // If every field has data, make a new object for database to read.
+    var newCustomer = {
+      customer_name: cNameInput.val().trim(),
+      item_name: cItemName.val().trim(),
+      estimated_weight: cEstWeight.val().trim(),
+      item_location: cItemLocation.val().trim()
+    };
+
+    // Sending to the backend.
+    submitCustomer(newCustomer);
+  }
+
+function submitCustomer (post){
+    $.post("/api/requests", post, function() {
+    console.log("New request data has been posted!");
+});
+}
+});
+</script>
+
+
+
+
+
+
+
+
+{{!-- Customer can see current requests, leave out for now
 <hr>
 <h2>All current requests</h2>
 <hr>
@@ -27,3 +89,4 @@
 <p class="tile">Request Status: {{this.request_status}}</p>
 <hr>
  {{/each}}
+ --}}
