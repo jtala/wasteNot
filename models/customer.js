@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  var customer = sequelize.define("customer_request", {
+  var Customer = sequelize.define("Customer", {
     customer_name: {
       type: DataTypes.INTEGER,
       allowNull: false
@@ -27,15 +27,5 @@ module.exports = function (sequelize, DataTypes) {
     
   });
 
-  return customer;
-};
-
-module.exports = function (sequelize, DataTypes) {
-
-  var driver = sequelize.define("driver", {
-    driver_name: DataTypes.STRING,
-    allowNull: false
-  });
-
-  return driver;
+  return Customer;
 };

@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS wasteNot_db;
 CREATE DATABASE wasteNot_db;
 USE wasteNot_db;
 
-CREATE TABLE customer_requests (
+CREATE TABLE Customers (
     request_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     customer_name VARCHAR(30) NOT NULL,
     item_name VARCHAR(30) NOT NULL,
