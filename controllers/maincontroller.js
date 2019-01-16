@@ -10,11 +10,14 @@ var db = require("../models");
 
 router.get("/", function (req, res) {
   console.log(db.Customer);
-  db.Customer.findAll().then(function (response) {
-    console.log(response);
-  });
-  console.log(hbsObject);
+  db.Customer.findAll().then(function (data) {
+    console.log(data);
+    var hbsObject = {
+      customers: data
+    };
+    console.log(hbsObject);
   res.render("index", hbsObject);
+  });
 });
 
 //This Page gets all the customer request data.
