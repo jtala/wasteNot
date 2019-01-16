@@ -1,10 +1,12 @@
 
 <div>
 <h2>All Customer Printed Here</h2>
+<div class="data">
 {{#each customers}}
-Customer Name: {{this.customer_name}} <br>
-Customer Item: {{this.item_name}}<br>
-Estimated Weight: {{this.estimated_weight}}<br>
-Customer Location: {{this.item_location}}<br>
+<p class="tile">Customer Name: {{this.customer_name}} </p>
+<p class="tile">Customer Item: {{this.item_name}}</p>
+<p class="tile">Estimated Weight: {{this.estimated_weight}}</p>
+<p class="tile">Customer Location: {{this.item_location}}</p>
  {{/each}}
+ </div>
 </div>

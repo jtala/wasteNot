@@ -11,6 +11,7 @@ var app = express();
 // img reference is static
 app.use(express.static(__dirname + '/public'));
 
+
 // JSON translator
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
