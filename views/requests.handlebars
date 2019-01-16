@@ -3,27 +3,27 @@
 <h2>Make new Request</h2>
 <form>
   Name:<br>
-  <input type="text" name="name">
+  <input type="text" name="name" >
   <br>
   Location:<br>
-  <input type="text" name="location">
+  <input type="text" name="location" >
   <br>
   Item:<br>
-  <input type="text" name="item">
+  <input type="text" name="item" >
   <br>
   Estimated weight:<br>
-  <input type="text" name="weight">  
+  <input type="text" name="weight" >  
   <br><br>
-  <input type="submit" value="Submit">
+  <input type="submit" value="Submit" >
 </form> 
 <hr>
 <h2>All current requests</h2>
 <hr>
 {{#each customers}}
-Customer Name: {{this.customer_name}} <br>
-Customer Location: {{this.item_location}}<br>
-Item: {{this.item_name}}<br>
-Estimated Weight: {{this.estimated_weight}}<br>
-Request Status: {{this.request_status}}<br>
+<p class="tile">Customer Name: {{this.customer_name}} </p>
+<p class="tile">Customer Location: {{this.item_location}}</p>
+<p class="tile">Item: {{this.item_name}}</p>
+<p class="tile">Estimated Weight: {{this.estimated_weight}}</p>
+<p class="tile">Request Status: {{this.request_status}}</p>
 <hr>
  {{/each}}
