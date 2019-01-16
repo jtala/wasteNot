@@ -1,0 +1,29 @@
+<button onclick="window.location.href = '/home';">Home</button>
+<br><br>
+<h2>Make new Request</h2>
+<form>
+  Name:<br>
+  <input type="text" name="name">
+  <br>
+  Location:<br>
+  <input type="text" name="location">
+  <br>
+  Item:<br>
+  <input type="text" name="item">
+  <br>
+  Estimated weight:<br>
+  <input type="text" name="weight">  
+  <br><br>
+  <input type="submit" value="Submit">
+</form> 
+<hr>
+<h2>All current requests</h2>
+<hr>
+{{#each customers}}
+Customer Name: {{this.customer_name}} <br>
+Customer Location: {{this.item_location}}<br>
+Item: {{this.item_name}}<br>
+Estimated Weight: {{this.estimated_weight}}<br>
+Request Status: {{this.request_status}}<br>
+<hr>
+ {{/each}}

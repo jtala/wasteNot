@@ -1,0 +1,12 @@
+<button onclick="window.location.href = '/home';">Home</button>
+<br><br>
+<h2>All current requests</h2>
+<hr>
+{{#each customers}}
+Customer Name: {{this.customer_name}} <br>
+Customer Location: {{this.item_location}}<br>
+Item: {{this.item_name}}<br>
+Estimated Weight: {{this.estimated_weight}}<br>
+Request Status: {{this.request_status}}<br>
+<hr>
+ {{/each}}
