@@ -5,8 +5,12 @@ var app = express();
 
 // More Dependency Installation..
 
+
+
+
 // img reference is static
-app.use(express.static("public"));
+app.use(express.static(__dirname + '/public'));
+
 // JSON translator
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -20,7 +24,10 @@ var routes = require("./controllers/maincontroller.js");
 
 app.use(routes);
 
+
+
 app.listen(PORT, function() {
     console.log("Server listening on: http://localhost:" + PORT);
   });
+  
   

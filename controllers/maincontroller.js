@@ -12,6 +12,7 @@ customer.selectall(function(data) {
     };
     console.log(hbsObject);
     res.render("index", hbsObject);
+   
   });
 });
 
