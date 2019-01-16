@@ -1,7 +1,7 @@
 module.exports = function (sequelize, DataTypes) {
   var Customer = sequelize.define("Customer", {
     customer_name: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false
     },
     item_name: {
@@ -21,11 +21,14 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false,
       defaultValue: false
     },
-    drivers_id: {
-      type: DataTypes.INTEGER
-    }
+    drivers_name: {
+      type: DataTypes.STRING
+    },
+  
     
+  },
+  {
+    timestamps: false
   });
-
   return Customer;
 };
