@@ -52,6 +52,10 @@ router.get("/", function (req, res) {
 // });
 
 
+// adding route to take to tracking page
+router.get("/track", function(req, res) {
+    res.render("track");
+});
 
 // Exports to server.js
 module.exports = router;
