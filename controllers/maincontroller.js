@@ -3,25 +3,16 @@ var express = require("express");
 var router = express.Router();
 var db = require("../models");
 
-// redirects to home
-// router.get("/", function(req, res) {
-//   res.redirect("/home");
-// });
+//  ----------------------- Home
 
 router.get("/", function (req, res) {
-  db.Customer.findAll().then(function (data) {
-    var hbsObject = {
-      customers: data
-    };
-    console.log(hbsObject);
-    res.render("index", hbsObject);
-  });
-});
+  res.render("index");
 
-//This Page gets all the customer request data.
-// router.get("/home", function(req, res) {
-//     res.render("index");
-// });
+
+
+ //  ----------------------- Drivers 
+
+  });
 
 router.get("/drive", function(req, res) {
   db.Customer.findAll().then(function(data) {
@@ -47,22 +38,36 @@ router.put("/requests/update/:id", function(req, res) {
   });
 });
 
-// router.get("/requests", function(req, res) {
-//   customer.selectall(function(data) {
-//     var hbsObject = {
-//       customers: data
-//     };
-//     res.render("requests", hbsObject);
+//  ----------------------- Requests 
 
-// //Home Page, gets All the burgers.
-// router.get("/", function (req, res) {
-//   console.log(db.Customer);
-//   db.Customer.findAll().then(function (response) {
-//     console.log(response);
-//   });
-//   console.log(hbsObject);
-//   res.render("index", hbsObject);
-// });
+router.get("/requests", function (req, res) {
+  res.render("requests");
+});
+
+
+  // Going to api shows entire object.
+router.get("/api/requests", function (req, res) {
+  db.Customer.findAll({})
+  .then(function(dbCustomer) {
+      res.json(dbCustomer);
+  });
+});
+
+  // Injects customers input onto the table.
+router.post("/api/requests", function (req, res) {
+  db.Customer.create(req.body);
+});
+
+
+
+
+//  ----------------------- Tracking
+
+
+// adding route to take to tracking page
+router.get("/track", function(req, res) {
+    res.render("track");
+});
 
 
 

@@ -21,15 +21,14 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false,
       defaultValue: false
     },
-    drivers_id: {
-      type: DataTypes.INTEGER
+    drivers_name: {
+      type: DataTypes.STRING
     },
+  
+    
   },
-    {
-    
+  {
     timestamps: false
-    
   });
-
   return Customer;
 };
