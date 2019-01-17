@@ -1,0 +1,31 @@
+/* PLUGINS */
+/* BASE STYLES */
+* {
+  position: relative; }
+
+body {
+  background-color: rgba(227, 250, 242, 0.8);
+  font-family: "Bitstream Vera Sans Mono", "Consolas", "Courier", monospace; }
+
+h2 {
+  text-align: center;
+  color: red;
+  width: 90%;
+  padding: 3%;
+  margin: 0;
+  background-color: #28b485; }
+
+div {
+  width: 100%; }
+
+.data {
+  margin: 1% auto;
+  width: 30%;
+  text-align: center;
+  background-color: #7ed56f;
+  border-radius: 20px; }
+
+/* LAYOUTS */
+/* MODULES */
+
+/*# sourceMappingURL=app.css.map */

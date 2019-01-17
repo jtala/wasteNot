@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "scripts": {
-    "start": "gulp"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jtala/wasteNot.git"
@@ -20,15 +18,10 @@
   "dependencies": {
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
-    "gulp-cli": "^2.0.1",
     "mysql": "^2.16.0",
     "normalize.css": "^8.0.1"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.3",
-    "gulp": "^4.0.0",
-    "gulp-livereload": "^4.0.1",
-    "gulp-sass": "^4.0.2",
     "mysql2": "^1.6.4",
     "path": "^0.12.7",
     "sequelize": "^4.42.0",
