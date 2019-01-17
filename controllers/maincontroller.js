@@ -14,7 +14,7 @@ router.get("/", function (req, res) {
       customers: data
     };
     console.log(hbsObject);
-  res.render("index", hbsObject);
+    res.render("index", hbsObject);
   });
 });
 
@@ -37,13 +37,13 @@ router.put("/requests/update/:id", function(req, res) {
     request_status: true
   },
   {
-where: {
-  id: req.params.id
-}
+    where: {
+    id: req.params.id
+    }
   }).then(function (data) {
-console.log(data);
+    console.log(data);
 // is this the correct way of displaying data
-res.json("/");
+    res.json("/");
   });
 });
 
