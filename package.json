@@ -3,10 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "scripts": {
-    "compile:sass": "node-sass sass/main.scss public/assets/css/style.css -w",
-    "start": "node server.js"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jtala/wasteNot.git"
@@ -25,12 +22,10 @@
     "normalize.css": "^8.0.1"
   },
   "devDependencies": {
-    "node-sass": "^4.11.0",
-    "sass-loader": "^7.1.0",
-    "webpack": "^4.28.4",
     "mysql2": "^1.6.4",
     "path": "^0.12.7",
     "sequelize": "^4.42.0",
-    "sequelize-cli": "^5.4.0"
+    "sequelize-cli": "^5.4.0",
+    "webpack": "^4.28.4"
   }
 }

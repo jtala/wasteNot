@@ -8,11 +8,9 @@ var db = require("./models");
 
 
 
-
 // img reference is static
 app.use(express.static(__dirname + '/public'));
-
-
+app.get('css/app.css', function(req, res){ res.send('css/app.css'); res.end(); });
 // JSON translator
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
