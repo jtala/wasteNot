@@ -4,8 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "compile:sass": "node-sass sass/main.scss public/assets/css/style.css -w",
-    "start": "node server.js"
+    "start": "gulp"
   },
   "repository": {
     "type": "git",
@@ -21,16 +20,19 @@
   "dependencies": {
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
+    "gulp-cli": "^2.0.1",
     "mysql": "^2.16.0",
     "normalize.css": "^8.0.1"
   },
   "devDependencies": {
-    "node-sass": "^4.11.0",
-    "sass-loader": "^7.1.0",
-    "webpack": "^4.28.4",
+    "browser-sync": "^2.26.3",
+    "gulp": "^4.0.0",
+    "gulp-livereload": "^4.0.1",
+    "gulp-sass": "^4.0.2",
     "mysql2": "^1.6.4",
     "path": "^0.12.7",
     "sequelize": "^4.42.0",
-    "sequelize-cli": "^5.4.0"
+    "sequelize-cli": "^5.4.0",
+    "webpack": "^4.28.4"
   }
 }
