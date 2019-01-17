@@ -58,6 +58,8 @@ function handleFormSubmit(event) {
       item_location: cItemLocation.val().trim()
     };
 
+    console.log(newCustomer);
+
     // Sending to the backend.
     submitCustomer(newCustomer);
   }
