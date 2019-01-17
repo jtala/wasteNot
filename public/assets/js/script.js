@@ -1,17 +1,20 @@
 $(document).ready(function () {
-    $(document).on("click", ".accept-req", function (event) {
+    console.log("hello");
+    $(document).on("click", ".accept-btn", function (event) {
         event.preventDefault();
-
-        var request_id = $(this).children(".id").val();
+        console.log(this);
+        var request_id = $(this).attr("id");
+        console.log(request_id);
         // creates variable for request id to be used to know which request is getting updated with a request_status of true.
         $.ajax({
             method: "PUT",
             url: "/requests/update/" + request_id
         }).then(function (data) {
-
+            console.log(data);
             location.reload();
         });
         
+
         
     });
 });

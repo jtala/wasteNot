@@ -7,15 +7,16 @@ var db = require("../models");
 
 router.get("/", function (req, res) {
   res.render("index");
+  
 
 
 
- //  ----------------------- Drivers 
+  //  ----------------------- Drivers 
 
-  });
+});
 
-router.get("/drive", function(req, res) {
-  db.Customer.findAll().then(function(data) {
+router.get("/drive", function (req, res) {
+  db.Customer.findAll().then(function (data) {
     var hbsObject = {
       customers: data
     };
@@ -23,19 +24,18 @@ router.get("/drive", function(req, res) {
   });
 });
 
-router.put("/requests/update/:id", function(req, res) {
+router.put("/requests/update/:id", function (req, res) {
   db.Customer.update({
     request_status: true
-  },
-  {
-    where: {
-    id: req.params.id
-    }
-  }).then(function (data) {
-    console.log(data);
-// is this the correct way of displaying data
-    res.json("/");
-  });
+  },{
+      where: {
+        id: req.params.id
+      }
+    }).then(function (data) {
+      console.log(data);
+      // is this the correct way of displaying data
+      res.json(data);
+    });
 });
 
 //  ----------------------- Requests 
@@ -45,15 +45,15 @@ router.get("/requests", function (req, res) {
 });
 
 
-  // Going to api shows entire object.
+// Going to api shows entire object.
 router.get("/api/requests", function (req, res) {
   db.Customer.findAll({})
-  .then(function(dbCustomer) {
+    .then(function (dbCustomer) {
       res.json(dbCustomer);
-  });
+    });
 });
 
-  // Injects customers input onto the table.
+// Injects customers input onto the table.
 router.post("/api/requests", function (req, res) {
   db.Customer.create(req.body);
 });
@@ -65,8 +65,8 @@ router.post("/api/requests", function (req, res) {
 
 
 // adding route to take to tracking page
-router.get("/track", function(req, res) {
-    res.render("track");
+router.get("/track", function (req, res) {
+  res.render("track");
 });
 
 
