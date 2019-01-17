@@ -69,6 +69,18 @@ router.get("/track", function(req, res) {
     res.render("track");
 });
 
+// router.get("/api/track", function (req, res) {
+//   console.log(req);
+//   db.Customer.findAll({
+//     // where: {
+//     //   id: 2
+//     // }
+//   })
+//   .then(function(dbCustomer) {
+//     res.json(dbCustomer);
+//   });
+// });
+
 
 
 // Exports to server.js
