@@ -30,11 +30,10 @@ function handleFormSubmit(event) {
   }
 
 function submitCustomer (post){
-    $.post("/api/customers", post, function() {
-    console.log("New customers' data has been posted");
+    $.post("/api/requests", post, function() {
+    console.log("New request data has been posted");
 });
 }
 
 
-  
 });
