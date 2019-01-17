@@ -1,22 +1,17 @@
 $(document).ready(function () {
-    $(document).on("click", ".btn", function (event) {
+    $(document).on("click", ".accept-req", function (event) {
         event.preventDefault();
-        if (this.val() === "driver") {
-            
-            $.ajax({
-                method: "GET",
-                url: "/driver"
-            }).then(function (response) {
-                console.log(response);
-            });
 
-        } else if (this.val() === "customer") {
-            $.ajax({
-                method: "GET",
-                url: "/customer"
-            }).then(function (response) {
-                console.log(response);
-            });
-        }
+        // var request_id = $(this).
+        // creates variable for request id to be used to know which request is getting updated with a request_status of true.
+        $.ajax({
+            method: "PUT",
+            url: "/burgers/update/" + request_id
+        }).then(function (data) {
+
+            location.reload();
+        });
+        
+        
     });
 });
