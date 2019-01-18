@@ -3,16 +3,21 @@ var express = require("express");
 var router = express.Router();
 var db = require("../models");
 
-//  ----------------------- Home
+//  -------- home and home to login
 
 router.get("/", function (req, res) {
-  res.render("index");
-  
-
-
-
+  res.render("home");
   
 });
+
+router.get("/index", function(req, res) {
+  res.render("index");
+});
+
+
+// Login
+
+
 
 //  ----------------------- Drivers 
 
