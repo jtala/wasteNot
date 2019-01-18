@@ -1,24 +1,25 @@
-
+<div class="jumboForm">
 <h4>login/create account</h4>
 <form id="login">
-    <div class="form-group">
+    <div class="form-group jumboFrom">
         <label for="userName">Username: </label>
         <input type="text" class="form-control" id="userName">
         <br>
-        <label for="password">Username: </label>
+        <label for="password">Password: </label>
         <input type="text" class="form-control" id="password">
         <br>
-        <select style="all:unset;" name="account" id="accountType">
+        <select style="all:unset;color:#FFF;" name="account" id="accountType">
             <option style="all:unset;" value="customer">Customer Login</option>
             <option style="all:unset;" value="driver">Driver Login</option>
         </select>
-        <button type="submit" class="btn btn success submit" >Login</button>
+        <button type="submit" class="tile success submit" style="left:30%;" >Login</button>
     </div>
 </form>
+</div>
 
-<button onclick="window.location.href = '/requests';">Log in as Customer</button>
+<button class="tile" onclick="window.location.href = '/requests';">Log in as Customer</button>
 
-<button onclick="window.location.href = '/drive';">Log in as Driver</button>
+<button class="tile" onclick="window.location.href = '/drive';">Log in as Driver</button>
 
 <script>
     $(document).ready(function() {
