@@ -14,7 +14,7 @@
         <input placeholder="15 lbs" type="text" class="form-control" id="estimated_weight">
         <br />
         <label for="item_location">Item Location: </label>
-        <input placeholder="Post Title" type="text" class="form-control" id="item_location">
+        <input placeholder="Los Angeles" type="text" class="form-control" id="item_location">
 
         <br/>
         <button type="submit" class="btn btn-success submit">Submit</button>
@@ -35,19 +35,19 @@ var cmsForm = $("#cms");
 // On click listener for when customer submits form.
 $(cmsForm).on("submit", handleFormSubmit);
 
-// Function prevents empty slots, creates an object with customer's data and sends to backend.
+// Function prevents empty slots, creates an object with customer's data & posts it to the backend. Can be seen in the requests db.
 function handleFormSubmit(event) {
     event.preventDefault();
     // Will not submit unless every field has data.
     if (!cNameInput.val().trim() || !cItemName.val().trim() || !cEstWeight.val() || !cItemLocation.val()  ) {
       return;
     }
-    // If every field has data, make a new object for database to read.
+    // Take data from form & make a new object for database to read.
     var newCustomer = {
-      customer_name: cNameInput.val().trim(),
-      item_name: cItemName.val().trim(),
-      estimated_weight: cEstWeight.val().trim(),
-      item_location: cItemLocation.val().trim()
+      customer: cNameInput.val().trim(),
+      item: cItemName.val().trim(),
+      weight: cEstWeight.val().trim(),
+      location: cItemLocation.val().trim()
     };
 
     console.log(newCustomer);
