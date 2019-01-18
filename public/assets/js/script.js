@@ -8,7 +8,7 @@ $(document).ready(function () {
         // creates variable for request id to be used to know which request is getting updated with a request_status of true.
         $.ajax({
             method: "PUT",
-            url: "/requests/update/" + request_id
+            url: "/drive/update/" + request_id
         }).then(function (data) {
             console.log(data);
             location.reload();

@@ -19,15 +19,15 @@ router.get("/", function (req, res) {
 router.get("/drive", function (req, res) {
   db.Request.findAll().then(function (data) {
     var hbsObject = {
-      customers: data
+      requests: data
     };
     res.render("drive", hbsObject);
   });
 });
 
-router.put("/requests/update/:id", function (req, res) {
-  db.Customer.update({
-    request_status: true
+router.put("/drive/update/:id", function (req, res) {
+  db.Request.update({
+    status: true
   },{
       where: {
         id: req.params.id
@@ -66,7 +66,7 @@ router.post("/api/requests", function (req, res) {
 
 
 // adding route to take to tracking page
-router.get("/track", function (req, res) {
+router.get("/login", function (req, res) {
   res.render("track");
 });
 

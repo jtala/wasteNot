@@ -19,10 +19,19 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         },
         status: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            defaultValue: false
+        },
+        is_complete: {
+            type: DataTypes.BOOLEAN,
             allowNull: false,
             defaultValue: false
         }
-    });
+        
+    },
+            {
+                timestamps: false            
+});
     return Request;
 };
