@@ -5,14 +5,16 @@
         <label for="userName">Username: </label>
         <input type="text" class="form-control" id="userName">
         <br>
-        <label for="password">Username: </label>
+        <label for="password">Password: </label>
         <input type="text" class="form-control" id="password">
         <br>
         <select style="all:unset;" name="account" id="accountType">
             <option style="all:unset;" value="customer">Customer Login</option>
             <option style="all:unset;" value="driver">Driver Login</option>
         </select>
-        <button type="submit" class="btn btn success submit" >Login</button>
+
+        {{!-- SENDS DIRECTLY TO REQUESTS, NO WAY TO ADD VALIDATORS YET --}}
+        <button type="submit" class="btn btn success submit" onclick="window.location.href = '/requests';">Login</button>
     </div>
 </form>
 
@@ -21,12 +23,17 @@
 <button onclick="window.location.href = '/drive';">Log in as Driver</button>
 
 <script>
+    // Getting username & pw to database.
     $(document).ready(function() {
+        // Submit button id.
+        var login = $("#login");
 
+        // Data from input forms.
         var userName = $("#userName");
         var password = $("#password");
+
+        // To either insert into Customers or Drivers table depending on accountType selection. Right now everything is going to Customers table.
         var accountType = $("#accountType");
-        var login = $("#login");
 
 
         $(login).on("submit", userLogin);
@@ -34,17 +41,15 @@
         function userLogin(event) {
             event.preventDefault();
             
+            // If empty don't submit.
             if (!userName.val().trim() || !password.val().trim()){
                 return;
             }
-            console.log(userName.val().trim());
-            console.log(password.val().trim());
-            console.log(accountType.val());
 
+            // Create object to send to backend,
             var loginData = {
-                login_username: userName.val().trim(),
-                login_password: password.val().trim(),
-                account_type: accountType.val()
+                username: userName.val().trim(),
+                password: password.val().trim(),
             };
 
             console.log(loginData);
@@ -55,10 +60,14 @@
 
         function submitLogin (post){
             $.post("/api/login", post, function() {
-                console.log("login submitted")
+                console.log("login submitted");
             });
         }
     });
+
+
+    
+
 
 </script>
 
