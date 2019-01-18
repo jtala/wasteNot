@@ -1,21 +1,21 @@
-<button onclick="window.location.href = '/';">Home</button>
+
 
 <h2>All current requests</h2>
 <ul>
-    {{#each customers}}
+    {{#each Request}}
     <li>
         <ul>
-            <li>Customer Name: {{this.customer_name}} </li><br>
-            <li>Customer Location: {{this.item_location}}</li><br>
-            <li>Item: {{this.item_name}}</li><br>
-            <li>Estimated Weight: {{this.estimated_weight}}</li><br>
-            <li>Request Status: <br><br>{{#if this.request_status}}
+            <li>Customer Name: {{this.customer}} </li><br>
+            <li>Customer Location: {{this.location}}</li><br>
+            <li>Item: {{this.item}}</li><br>
+            <li>Estimated Weight: {{this.weight}}</li><br>
+            <li>Request Status: <br><br>{{#if this.status}}
                 <p>Accepted</p>
                 {{else}}
                 <p>Pending...</p>
                 {{/if}}
             </li><br>
-            {{#unless this.request_status}}
+            {{#unless this.status}}
             <button class="accept-btn" id={{this.id}}>Accept</button>
             {{/unless}}
         </ul>

@@ -16,7 +16,7 @@ router.get("/", function (req, res) {
 });
 
 router.get("/drive", function (req, res) {
-  db.Customer.findAll().then(function (data) {
+  db.Request.findAll().then(function (data) {
     var hbsObject = {
       customers: data
     };
