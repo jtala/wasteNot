@@ -1,8 +1,60 @@
 
-<p>Enter a Username: </p><input type="text" class="login-form" id="username"><br><br>
-<p>Enter a Password: </p><input type="text" class="login-form" id="password">
+{{!-- <p>Enter a Username: </p><input type="text" class="login-form" id="username"><br><br>
+<p>Enter a Password: </p><input type="text" class="login-form" id="password"> --}}
 
+<h4>login/create account</h4>
+<form id="login">
+    <div class="form-group">
+        <label for="userName">Username: </label>
+        <input type="text" class="form-control" id="userName">
+        <br>
+        <label for="password">Username: </label>
+        <input type="text" class="form-control" id="password">
+        <br>
+        <select style="all:unset;" name="account" id="accountType">
+            <option style="all:unset;" value="customer">Customer Login</option>
+            <option style="all:unset;" value="driver">Driver Login</option>
+        </select>
+        <button type="submit" class="btn btn success submit" >Login</button>
+    </div>
+</form>
 
 <button onclick="window.location.href = '/requests';">Log in as Customer</button>
 
 <button onclick="window.location.href = '/drive';">Log in as Driver</button>
+
+<script>
+    $(document).ready(function() {
+
+        var userName = $("#userName");
+        var password = $("#password");
+        var accountType = $("#accountType");
+        var login = $("#login");
+
+
+        $(login).on("submit", userLogin);
+
+        function userLogin(event) {
+            event.preventDefault();
+            
+            if (!userName.val().trim() || !password.val().trim()){
+                return;
+            }
+            console.log(userName.val().trim());
+            console.log(password.val().trim());
+            console.log(accountType.val());
+
+            var loginData = {
+                login_username: userName.val().trim(),
+                login_password: password.val().trim()
+            };
+
+            console.log(loginData);
+
+    }
+
+    });
+
+</script>
+
+
