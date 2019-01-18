@@ -1,11 +1,34 @@
+<style>
+    /*All CSS is temporary for now, just wanted to throw ideas in.*/
+    #cms{
+        text-align:  center;
+    }
+    .form-control{
+        text-align: center;
+    }
 
+    #logs{
+        text-align: center;
+    }
+
+    #loading {
+        width: 100%;
+    }
+</style>
 <button onclick="window.location.href = '/';">Home</button>
 <br>
 <br>
+<div class="welcome">
+{{!--     Username here when ready --}}    
+    <h2>Recycling Service in the next 10 minutes.</h2>
+    <div id="instructions">
+    <h3> Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias illum nesciunt eos quas deserunt aliquid, officia doloremque corporis esse neque. Nesciunt sequi ipsam ratione possimus temporibus minus officia dolorem nobis.</h3>
+     <br><br>
+    </div>
+</div>
+
 <form id="cms">
     <div class="form-group">
-        <label for="customer_name">Customer Name</label>
-        <input placeholder="Jonathan T" type="text" class="form-control" id="customer_name">
         <br />
         <label for="item_name">Item Name</label>
         <input placeholder="Recyclables" type="text" class="form-control" id="item_name">
@@ -21,11 +44,94 @@
     </div>
 </form>
 
+<br><br>
+
+<div id="currentRequests">
+    <h2>Current Requests</h2>
+</div>
+
+<br><br>
+
+<table>
+  <tr>
+    <th>Your Drivers' Name</th>
+    <th>Items</th>
+    <th>Location</th>
+    <th>Weight</th>
+    <th>Status</th>
+  </tr>
+{{!-- Run Handlebars for loop here once driver side is done --}}
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+    <td>
+    <button type="cancel" value="cancel">cancel</button>
+    </td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+    <td>
+    <button type="cancel" value="cancel">cancel</button>
+    </td>
+  </tr>
+  <tr>
+    <td>Ernst Handel</td>
+    <td>Roland Mendel</td>
+    <td>Roland Mendel</td>
+    <td>Austria</td>
+    <td>
+    <button type="cancel" value="cancel">cancel</button>
+    </td>
+  </tr>
+  <tr>
+    <td>Island Trading</td>
+    <td>Helen Bennett</td>
+    <td>Helen Bennett</td>
+    <td>UK</td>
+    <td>
+    <button type="cancel" value="cancel">cancel</button>
+    </td>
+  </tr>
+  <tr>
+    <td>Laughing Bacchus Winecellars</td>
+    <td>Yoshi Tannamuri</td>
+    <td>Yoshi Tannamuri</td>
+    <td>Canada</td>
+    <td>
+    <button type="cancel" value="cancel">cancel</button>
+    </td>
+  </tr>
+  <tr>
+    <td>Magazzini Alimentari Riuniti</td>
+    <td>Giovanni Rovelli</td>
+    <td>Giovanni Rovelli</td>
+    <td>Italy</td>
+    <td>
+    <button type="cancel" value="cancel">cancel</button>
+    </td>
+  </tr>
+</table>
+
+<br><br>
+
+<div id="logs">
+<button type="submit" class="btn btn-success submit">See logs</button>
+</div>
+
+<br><br>
+
+<img id="loading" src ="https://cdn-images-1.medium.com/max/1600/0*d94Rn5bObhShU7YV.gif">
+
+
 <script>
  $(document).ready(function() {
-// jQuery references.
-// "c" short for Customer.
-var cNameInput = $("#customer_name");
+
+ 
 var cItemName = $("#item_name");
 var cEstWeight = $("#estimated_weight");
 var cItemLocation = $("#item_location");
@@ -39,12 +145,11 @@ $(cmsForm).on("submit", handleFormSubmit);
 function handleFormSubmit(event) {
     event.preventDefault();
     // Will not submit unless every field has data.
-    if (!cNameInput.val().trim() || !cItemName.val().trim() || !cEstWeight.val() || !cItemLocation.val()  ) {
+    if (!cItemName.val().trim() || !cEstWeight.val() || !cItemLocation.val() ) {
       return;
     }
     // Take data from form & make a new object for database to read.
     var newCustomer = {
-      customer: cNameInput.val().trim(),
       item: cItemName.val().trim(),
       weight: cEstWeight.val().trim(),
       location: cItemLocation.val().trim()
@@ -63,24 +168,3 @@ function submitCustomer (post){
 }
 });
 </script>
-
-
-
-
-
-
-
-
-{{!-- Customer can see current requests, leave out for now
-<hr>
-<h2>All current requests</h2>
-<hr>
-{{#each customers}}
-<p class="tile">Customer Name: {{this.customer_name}} </p>
-<p class="tile">Customer Location: {{this.item_location}}</p>
-<p class="tile">Item: {{this.item_name}}</p>
-<p class="tile">Estimated Weight: {{this.estimated_weight}}</p>
-<p class="tile">Request Status: {{this.request_status}}</p>
-<hr>
- {{/each}}
- --}}
