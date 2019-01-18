@@ -10,7 +10,7 @@
         <label for="userName">Username: </label>
         <input type="text" class="form-control" id="userName">
         <br>
-        <label for="password">Password: </label>
+        <label for="password">Username: </label>
         <input type="text" class="form-control" id="password">
         <br>
         <select style="all:unset;color:#FFF;" name="account" id="accountType">
@@ -25,6 +25,29 @@
 <button class="tile" onclick="window.location.href = '/requests';">Log in as Customer</button>
 
 <button class="tile" onclick="window.location.href = '/drive';">Log in as Driver</button>
+<h4>Login</h4>
+<form id="existLogin">
+    <div class="form-group">
+        <label for="existUserName">Username: </label>
+        <input type="text" class="form-control" id="existUserName">
+        <br>
+        <label for="existPassword">Password: </label>
+        <input type="text" class="form-control" id="existPassword">
+        <br>
+        <select style="all:unset;" name="existAccount" id="existAccountType">
+            <option style="all:unset;" value="Customer">Customer Login</option>
+            <option style="all:unset;" value="Driver">Driver Login</option>
+        </select>
+        <button type="submit" class="btn btn success submit" >Login</button>
+    </div>
+</form>
+
+<hr>
+<hr>
+
+<button onclick="window.location.href = '/requests';">Log in as Customer</button>
+
+<button onclick="window.location.href = '/drive';">Log in as Driver</button>
 
 <script>
     $(document).ready(function() {
@@ -83,9 +106,7 @@
             if (!existUserName.val().trim() || !existPassword.val().trim()){
                 return;
             }
-            console.log(existUserName.val().trim());
-            console.log(existPassword.val().trim());
-            console.log(existAccountType.val());
+
 
             var existLoginData = {
                 exist_login_username: existUserName.val().trim(),
@@ -93,17 +114,15 @@
                 exist_account_type: existAccountType.val()
             };
 
-            console.log(existLoginData);
-            //sending to back end
-            submitExistLogin(existLoginData);
+        $.ajax({
+            method: "POST",
+            url: "/login/" + existLoginData
+        }).then( function(data){
+            console.log(data);
+        
+        });
+    }
 
-        }
-
-        function submitExistLogin (post){
-            $.post("/api/existlogin", post, function() {
-                console.log("login submitted")
-            });
-        }
     });
 
 </script>
