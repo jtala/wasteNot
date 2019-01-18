@@ -5,7 +5,7 @@
         <label for="userName">Username: </label>
         <input type="text" class="form-control" id="userName">
         <br>
-        <label for="password">Password: </label>
+        <label for="password">Username: </label>
         <input type="text" class="form-control" id="password">
         <br>
         <select style="all:unset;" name="account" id="accountType">
@@ -29,8 +29,8 @@
         <input type="text" class="form-control" id="existPassword">
         <br>
         <select style="all:unset;" name="existAccount" id="existAccountType">
-            <option style="all:unset;" value="customer">Customer Login</option>
-            <option style="all:unset;" value="driver">Driver Login</option>
+            <option style="all:unset;" value="Customer">Customer Login</option>
+            <option style="all:unset;" value="Driver">Driver Login</option>
         </select>
         <button type="submit" class="btn btn success submit" >Login</button>
     </div>
@@ -100,9 +100,7 @@
             if (!existUserName.val().trim() || !existPassword.val().trim()){
                 return;
             }
-            console.log(existUserName.val().trim());
-            console.log(existPassword.val().trim());
-            console.log(existAccountType.val());
+
 
             var existLoginData = {
                 exist_login_username: existUserName.val().trim(),
@@ -110,17 +108,15 @@
                 exist_account_type: existAccountType.val()
             };
 
-            console.log(existLoginData);
-            //sending to back end
-            submitExistLogin(existLoginData);
+        $.ajax({
+            method: "POST",
+            url: "/login/" + existLoginData
+        }).then( function(data){
+            console.log(data);
+        
+        });
+    }
 
-        }
-
-        function submitExistLogin (post){
-            $.post("/api/existlogin", post, function() {
-                console.log("login submitted")
-            });
-        }
     });
 
 </script>

@@ -71,8 +71,20 @@ router.post("/api/requests", function (req, res) {
 
 
 // adding route to take to tracking page
-router.get("/track", function (req, res) {
-  res.render("track");
+router.post("/login/:loginData", function (req, res) {
+  // var accountType = req.params.loginData.exist_account_type;
+
+  
+  console.log(req.params.loginData.exist_account_type);
+  db.Customer.findOne({
+    where: {
+      username: req.params.loginData.exist_login_username
+    }
+  }).then(function(data) {
+    console.log(data);
+    if (data)
+    res.json(data);
+  });
 });
 
 
