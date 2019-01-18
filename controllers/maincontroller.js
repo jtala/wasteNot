@@ -36,15 +36,15 @@ router.get("/api/login", function (req, res) {
 router.get("/drive", function (req, res) {
   db.Request.findAll().then(function (data) {
     var hbsObject = {
-      customers: data
+      requests: data
     };
     res.render("drive", hbsObject);
   });
 });
 
-router.put("/requests/update/:id", function (req, res) {
-  db.Customer.update({
-    request_status: true
+router.put("/drive/update/:id", function (req, res) {
+  db.Request.update({
+    status: true
   },{
       where: {
         id: req.params.id
@@ -76,8 +76,6 @@ router.post("/api/requests", function (req, res) {
   db.Request.create(req.body);
 });
 
-<<<<<<< HEAD
-=======
 
 
 
@@ -103,6 +101,5 @@ router.post("/login/:loginData", function (req, res) {
 
 
 
->>>>>>> 4d309e7514a6d854f1eea204d5e6f6300feef267
 // Exports to server.js
 module.exports = router;

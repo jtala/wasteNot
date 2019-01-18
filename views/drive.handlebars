@@ -1,24 +1,62 @@
+<h2>All Current Requests</h2>
 
-
-<h2>All current requests</h2>
-<ul>
-    {{#each Request}}
-    <li>
-        <ul>
-            <li>Customer Name: {{this.customer}} </li><br>
-            <li>Customer Location: {{this.location}}</li><br>
-            <li>Item: {{this.item}}</li><br>
-            <li>Estimated Weight: {{this.weight}}</li><br>
-            <li>Request Status: <br><br>{{#if this.status}}
+<div>
+    <h3>Current Accepted Request</h3>
+    <table>
+        <tr>
+            <th>Customer Name</th>
+            <th>Customer Location</th>
+            <th>Item</th>
+            <th>Estimated Weight</th>
+            <th>Request Status</th>
+        </tr>
+        {{#each requests}}
+        {{#if this.status}}
+        {{#unless this.is_complete}}
+        <tr>
+            <td>{{this.customer}}</td>
+            <td>{{this.location}}</td>
+            <td>{{this.item}}</td>
+            <td>{{this.weight}}</td>
+            <td>{{#if this.status}}
                 <p>Accepted</p>
                 {{else}}
-                <p>Pending...</p>
+                <button class="accept-btn" id={{this.id}}>Accept</button>
                 {{/if}}
-            </li><br>
-            {{#unless this.status}}
-            <button class="accept-btn" id={{this.id}}>Accept</button>
-            {{/unless}}
-        </ul>
-    </li>
-    {{/each}}
-</ul>
+            </td>
+        </tr>
+        {{/unless}}
+        {{/if}}
+        {{/each}}
+        </table>
+</div>
+<div>
+    <h3>All Unaccepted Requests</h3>
+    <table>
+        <tr>
+            <th>Customer Name</th>
+            <th>Customer Location</th>
+            <th>Item</th>
+            <th>Estimated Weight</th>
+            <th>Request Status</th>
+        </tr>
+        {{#each requests}}
+        {{#unless this.status}}
+        {{#unless this.is_complete}}
+        <tr>
+            <td>{{this.customer}}</td>
+            <td>{{this.location}}</td>
+            <td>{{this.item}}</td>
+            <td>{{this.weight}}</td>
+            <td>{{#if this.status}}
+                <p>Accepted</p>
+                {{else}}
+                <button class="accept-btn" id={{this.id}}>Accept</button>
+                {{/if}}
+            </td>
+        </tr>
+        {{/unless}}
+        {{/unless}}
+        {{/each}}
+        </table>
+</div>
