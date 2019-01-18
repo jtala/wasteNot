@@ -76,5 +76,33 @@ router.post("/api/requests", function (req, res) {
   db.Request.create(req.body);
 });
 
+<<<<<<< HEAD
+=======
+
+
+
+//  ----------------------- Tracking
+
+
+// adding route to take to tracking page
+router.post("/login/:loginData", function (req, res) {
+  // var accountType = req.params.loginData.exist_account_type;
+
+  
+  console.log(req.params.loginData.exist_account_type);
+  db.Customer.findOne({
+    where: {
+      username: req.params.loginData.exist_login_username
+    }
+  }).then(function(data) {
+    console.log(data);
+    if (data)
+    res.json(data);
+  });
+});
+
+
+
+>>>>>>> 4d309e7514a6d854f1eea204d5e6f6300feef267
 // Exports to server.js
 module.exports = router;
