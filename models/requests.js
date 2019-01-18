@@ -24,5 +24,15 @@ module.exports = function (sequelize, DataTypes) {
             defaultValue: false
         }
     });
+    // Working on getting customer Id into this table.
+    /* Request.associate = function(models) {
+        // We're saying that a Request should be associated with a customer.
+        // A Request can't be created without an customer because of the Foreign Key restraint.
+        Request.belongsTo(models.Customer, {
+          foreignKey: {
+            allowNull: false
+          }
+        });
+      }; */
     return Request;
 };

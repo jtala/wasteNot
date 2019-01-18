@@ -14,8 +14,20 @@ router.get("/index", function(req, res) {
   res.render("index");
 });
 
+//  ----------------------- Logins
 
-// Login
+// Injects login information onto Customers table & reroutes to requests.
+router.post("/api/login", function (req, res) {
+  db.Customer.create(req.body);
+});
+
+// Going to this url shows JSON of all the login information
+router.get("/api/login", function (req, res) {
+  db.Customer.findAll({})
+    .then(function (dbLogins) {
+      res.json(dbLogins);
+    });
+});
 
 
 
@@ -51,7 +63,7 @@ router.get("/requests", function (req, res) {
 });
 
 
-// Going to api shows entire object.
+// URL shows JSON of all requests.
 router.get("/api/requests", function (req, res) {
   db.Request.findAll({})
     .then(function (dbRequest) {
@@ -63,19 +75,6 @@ router.get("/api/requests", function (req, res) {
 router.post("/api/requests", function (req, res) {
   db.Request.create(req.body);
 });
-
-
-
-
-//  ----------------------- Tracking
-
-
-// adding route to take to tracking page
-router.get("/track", function (req, res) {
-  res.render("track");
-});
-
-
 
 // Exports to server.js
 module.exports = router;
