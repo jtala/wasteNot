@@ -48,15 +48,15 @@ router.get("/requests", function (req, res) {
 
 // Going to api shows entire object.
 router.get("/api/requests", function (req, res) {
-  db.Customer.findAll({})
-    .then(function (dbCustomer) {
-      res.json(dbCustomer);
+  db.Request.findAll({})
+    .then(function (dbRequest) {
+      res.json(dbRequest);
     });
 });
 
-// Injects customers input onto the table.
+// Injects customer input onto requests table.
 router.post("/api/requests", function (req, res) {
-  db.Customer.create(req.body);
+  db.Request.create(req.body);
 });
 
 
