@@ -11,9 +11,10 @@ router.get("/", function (req, res) {
 
 
 
-  //  ----------------------- Drivers 
-
+  
 });
+
+//  ----------------------- Drivers 
 
 router.get("/drive", function (req, res) {
   db.Customer.findAll().then(function (data) {
