@@ -1,7 +1,4 @@
 
-{{!-- <p>Enter a Username: </p><input type="text" class="login-form" id="username"><br><br>
-<p>Enter a Password: </p><input type="text" class="login-form" id="password"> --}}
-
 <h4>login/create account</h4>
 <form id="login">
     <div class="form-group">
@@ -46,13 +43,21 @@
 
             var loginData = {
                 login_username: userName.val().trim(),
-                login_password: password.val().trim()
+                login_password: password.val().trim(),
+                account_type: accountType.val()
             };
 
             console.log(loginData);
+            //sending to back end
+            submitLogin(loginData);
 
-    }
+        }
 
+        function submitLogin (post){
+            $.post("/api/login", post, function() {
+                console.log("login submitted")
+            });
+        }
     });
 
 </script>
