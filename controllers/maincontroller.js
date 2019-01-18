@@ -66,7 +66,7 @@ router.post("/api/requests", function (req, res) {
 
 
 // adding route to take to tracking page
-router.get("/login", function (req, res) {
+router.get("/track", function (req, res) {
   res.render("track");
 });
 
