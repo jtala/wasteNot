@@ -21,17 +21,22 @@ module.exports = function (sequelize, DataTypes) {
         status: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            defaultValue: false
+            defaultValue: 0
         },
         is_complete: {
             type: DataTypes.BOOLEAN,
-            allowNull: false,
-            defaultValue: false
         }
-        
     },
-            {
-                timestamps: false            
-});
+    {
+        timestamps: false
+    }
+    );
+    
     return Request;
 };
+
+/* is_complete: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false
+        } */

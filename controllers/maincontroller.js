@@ -18,7 +18,8 @@ router.get("/index", function(req, res) {
 
 // Injects login information onto Customers table & reroutes to requests.
 router.post("/api/login", function (req, res) {
-  db.Customer.create(req.body);
+  db.Customer.create(req.body)
+  .then()
 });
 
 // Going to this url shows JSON of all the login information
