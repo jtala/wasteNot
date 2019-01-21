@@ -1,3 +1,5 @@
+import { createConnection } from "net";
+
 $(document).ready(function () {
     console.log("hello");
     $(document).on("click", ".accept-btn", function (event) {
@@ -10,6 +12,7 @@ $(document).ready(function () {
             method: "PUT",
             url: "/drive/update/" + request_id
         }).then(function (data) {
+            console.log(data);
             console.log(data);
             location.reload();
         });
