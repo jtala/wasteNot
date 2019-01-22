@@ -1,6 +1,6 @@
 <h4>create account</h4>
 <div class="jumboForm">
-    <h4>login/create account</h4>
+    <h4>Sign Up</h4>
     <form id="login">
         <div class="form-group jumboFrom">
             <label for="userName">Username: </label>
@@ -9,14 +9,8 @@
             <label for="password">Password: </label>
             <input type="text" class="form-control" id="password">
             <br>
-            {{!-- <select style="all:unset;color:#FFF;" name="account" id="accountType">
-                <option style="all:unset;" value="customer">Customer Login</option>
-                <option style="all:unset;" value="driver">Driver Login</option>
-            </select> --}}
-            <button type="submit" class="tile success submit" style="left:30%;">Login</button>
-
-            {{!-- SENDS DIRECTLY TO REQUESTS, NO WAY TO ADD VALIDATORS YET --}}
-            <button type="submit" class="btn btn success submit" onclick="window.location.href = '/requests';">Login</button>
+            <button type="submit" class="tile success submit" style="left:30%;">sign up as customer</button>
+            <button type="submit" class="btn btn success submit" onclick="window.location.href = '/requests';">sign up as driver</button>
         </div>
     </form>
 </div>
@@ -36,9 +30,9 @@
 <hr>
 <hr>
 
-<button id="existLoginCustomer" class="login-btn" value="Customer" onclick="window.location.href = '/requests';">Log in as a Customer</button>
+<button id="existLoginCustomer" class="login-btn" value="Customer" >Log in as a Customer</button>
 
-<button id="existLoginDriver" class="login-btn" value="Driver" onclick="window.location.href = '/drive';">Log in as a Driver</button>
+<button id="existLoginDriver" class="login-btn" value="Driver" >Log in as a Driver</button>
 
 <script>
     // Getting username & pw to database.
@@ -67,7 +61,6 @@
                 username: userName.val().trim(),
                 password: password.val().trim(),
             };
-            console.log(loginData);
             //sending to back end
             submitLogin(loginData);
             window.location.href = '/requests';
@@ -75,7 +68,7 @@
 
         function submitLogin(post) {
             $.post("/api/login", post, function () {
-                console.log("login submitted");
+                console.log("account created");
             });
         }
 
@@ -103,13 +96,13 @@
                 exist_login_password: existPassword.val().trim(),
                 exist_account_type: existLoginCustomer.val()
             };
-
             $.ajax({
                 method: "POST",
                 url: "/api/login/" + existLoginData.exist_account_type + "/" + existLoginData.exist_login_username + "/" + existLoginData.exist_login_password
             }).then(function (data) {
+                console.log("id stored");
                 console.log(data);
-
+                localStorage.setItem("ID", data.id);
             });
         }
 
@@ -129,14 +122,11 @@
                 exist_login_password: existPassword.val().trim(),
                 exist_account_type: existLoginDriver.val()
             };
-            console.log(existLoginData.exist_account_type);
 
             $.ajax({
                 method: "POST",
                 url: "/api/login/" + existLoginData.exist_account_type + "/" + existLoginData.exist_login_username + "/" + existLoginData.exist_login_password
             }).then(function (data) {
-                console.log(data);
-
             });
         }
 

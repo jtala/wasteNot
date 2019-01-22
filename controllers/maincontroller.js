@@ -31,17 +31,6 @@ router.post("/api/login", function (req, res) {
 });
 
 
-
-// Going to this url shows JSON of all the login information
-router.get("/api/login", function (req, res) {
-  db.Customer.findAll({})
-    .then(function (dbLogins) {
-      res.json(dbLogins);
-    });
-});
-
-
-
 //  ----------------------- Drivers 
 
 router.get("/drive", function (req, res) {
@@ -115,10 +104,14 @@ router.post("/api/login/:accountType/:username/:password", function (req, res) {
         username: req.params.username
       }
     }).then(function(data) {
-      console.log(data.dataValues);
       if (req.params.password === data.dataValues.password){
+        console.log(data);
         console.log("login succesful");
+
         res.json(data);
+      }
+      else {
+        console.log("login failed");
       }
     });
 
