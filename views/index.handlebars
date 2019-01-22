@@ -50,8 +50,7 @@
         $("#login").on("submit", userLogin);
 
         function userLogin(event) {
-            event.preventDefault();
-
+            event.preventDefault();  
             // If empty don't submit.
             if (!userName.val().trim() || !password.val().trim()) {
                 alert("One of the fields is empty! Please fill out all the forms before you submit.")
@@ -95,7 +94,7 @@
             var existLoginData = {
                 exist_login_username: existUserName.val().trim(),
                 exist_login_password: existPassword.val().trim(),
-                exist_account_type: existLoginCustomer.val()
+              exist_account_type: existLoginCustomer.val()
             };
             $.ajax({
                 method: "POST",
