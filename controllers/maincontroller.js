@@ -54,7 +54,6 @@ router.put("/drive/update/:id", function (req, res) {
         id: req.params.id
       }
     }).then(function (data) {
-      console.log(data);
       // is this the correct way of displaying data
       res.json(data);
     });
@@ -83,24 +82,41 @@ router.post("/api/requests", function (req, res) {
 
 
 
-//  ----------------------- Tracking
+//  ----------------------- EXISTING LOG IN
 
 
 // adding route to take to tracking page
-router.post("/login/:loginData", function (req, res) {
-  // var accountType = req.params.loginData.exist_account_type;
+router.post("/api/login/:accountType/:username", function (req, res) {
+  var accountType = req.params.accountType;
 
+
+
+  console.log(req.params.username);
+  console.log(req.params.accountType);
   
-  console.log(req.params.loginData.exist_account_type);
-  db.Customer.findOne({
-    where: {
-      username: req.params.loginData.exist_login_username
-    }
-  }).then(function(data) {
-    console.log(data);
-    if (data)
-    res.json(data);
-  });
+
+
+  if (accountType === "Customer") {
+
+    db.Customer.findOne({
+      where: {
+        username: req.params.username
+      }
+    }).then(function(data) {
+      console.log(data);
+      res.json(data);
+    });
+
+  } else if (accountType === "Driver") {
+    
+    db.Driver.findOne({
+      where: {
+        username: req.params.username
+      }
+    }).then(function(data) {
+      res.json(data);
+    });
+  }
 });
 
 

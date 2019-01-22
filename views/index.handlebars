@@ -1,32 +1,31 @@
-
 <h4>create account</h4>
 <div class="jumboForm">
-<h4>login/create account</h4>
-<form id="login">
-    <div class="form-group jumboFrom">
-        <label for="userName">Username: </label>
-        <input type="text" class="form-control" id="userName">
-        <br>
-        <label for="password">Password: </label>
-        <input type="text" class="form-control" id="password">
-        <br>
-        <select style="all:unset;color:#FFF;" name="account" id="accountType">
-            <option style="all:unset;" value="customer">Customer Login</option>
-            <option style="all:unset;" value="driver">Driver Login</option>
-        </select>
-        <button type="submit" class="tile success submit" style="left:30%;" >Login</button>
+    <h4>login/create account</h4>
+    <form id="login">
+        <div class="form-group jumboFrom">
+            <label for="userName">Username: </label>
+            <input type="text" class="form-control" id="userName">
+            <br>
+            <label for="password">Password: </label>
+            <input type="text" class="form-control" id="password">
+            <br>
+            <select style="all:unset;color:#FFF;" name="account" id="accountType">
+                <option style="all:unset;" value="customer">Customer Login</option>
+                <option style="all:unset;" value="driver">Driver Login</option>
+            </select>
+            <button type="submit" class="tile success submit" style="left:30%;">Login</button>
 
-        {{!-- SENDS DIRECTLY TO REQUESTS, NO WAY TO ADD VALIDATORS YET --}}
-        <button type="submit" class="btn btn success submit" onclick="window.location.href = '/requests';">Login</button>
-    </div>
-</form>
+            {{!-- SENDS DIRECTLY TO REQUESTS, NO WAY TO ADD VALIDATORS YET --}}
+            <button type="submit" class="btn btn success submit" onclick="window.location.href = '/requests';">Login</button>
+        </div>
+    </form>
 </div>
 
 <button class="tile" onclick="window.location.href = '/requests';">Log in as Customer</button>
 
 <button class="tile" onclick="window.location.href = '/drive';">Log in as Driver</button>
 <h4>Login</h4>
-<form id="existLogin">
+<form>
     <div class="form-group">
         <label for="existUserName">Username: </label>
         <input type="text" class="form-control" id="existUserName">
@@ -34,26 +33,20 @@
         <label for="existPassword">Password: </label>
         <input type="text" class="form-control" id="existPassword">
         <br>
-        <select style="all:unset;" name="existAccount" id="existAccountType">
-            <option style="all:unset;" value="Customer">Customer Login</option>
-            <option style="all:unset;" value="Driver">Driver Login</option>
-        </select>
-        <button type="submit" class="btn btn success submit" >Login</button>
     </div>
 </form>
 
 <hr>
 <hr>
 
-<button onclick="window.location.href = '/requests';">Log in as Customer</button>
+<button id="existLoginCustomer" class="login-btn" value="Customer" onclick="window.location.href = '/requests';">Log in as a Customer</button>
 
-<button onclick="window.location.href = '/drive';">Log in as Driver</button>
+<button id="existLoginDriver" class="login-btn" value="Driver" onclick="window.location.href = '/drive';">Log in as a Driver</button>
 
 <script>
     // Getting username & pw to database.
-    $(document).ready(function() {
+    $(document).ready(function () {
         // Submit button id.
-        var login = $("#login");
 
         // Data from input forms.
         var userName = $("#userName");
@@ -63,13 +56,13 @@
         var accountType = $("#accountType");
 
 
-        $(login).on("submit", userLogin);
+        $("#login").on("submit", userLogin);
 
         function userLogin(event) {
             event.preventDefault();
-            
+
             // If empty don't submit.
-            if (!userName.val().trim() || !password.val().trim()){
+            if (!userName.val().trim() || !password.val().trim()) {
                 return;
             }
 
@@ -85,26 +78,27 @@
 
         }
 
-        function submitLogin (post){
-            $.post("/api/login", post, function() {
+        function submitLogin(post) {
+            $.post("/api/login", post, function () {
                 console.log("login submitted");
             });
         }
 
-    // existing user login form
+        //---------------------------------------existing user login form
 
         var existUserName = $("#existUserName");
         var existPassword = $("#existPassword");
-        var existAccountType = $("#existAccountType");
-        var existLogin = $("#existLogin");
+       
+        var existLoginCustomer = $("#existLoginCustomer");
+        var existLoginDriver = $("#existLoginDriver");
 
 
-        $(existLogin).on("submit", existUserLogin);
+        existLoginCustomer.on("click", existUserLoginCustomer);
 
-        function existUserLogin(event) {
+        function existUserLoginCustomer(event) {
             event.preventDefault();
-            
-            if (!existUserName.val().trim() || !existPassword.val().trim()){
+
+            if (!existUserName.val().trim() || !existPassword.val().trim()) {
                 return;
             }
 
@@ -112,24 +106,49 @@
             var existLoginData = {
                 exist_login_username: existUserName.val().trim(),
                 exist_login_password: existPassword.val().trim(),
-                exist_account_type: existAccountType.val()
+                exist_account_type: existLoginCustomer.val()
             };
 
-        $.ajax({
-            method: "POST",
-            url: "/login/" + existLoginData
-        }).then( function(data){
-            console.log(data);
-        
-        });
-    }
+            $.ajax({
+                method: "POST",
+                url: "/api/login/" + existLoginData.exist_account_type + "/" + existLoginData.exist_login_username
+            }).then(function (data) {
+                console.log(data);
+
+            });
+        }
+
+        existLoginDriver.on("click", existUserLoginDriver);
+
+        function existUserLoginDriver(event) {
+            event.preventDefault();
+
+
+            if (!existUserName.val().trim() || !existPassword.val().trim()) {
+                return;
+            }
+
+
+            var existLoginData = {
+                exist_login_username: existUserName.val().trim(),
+                exist_login_password: existPassword.val().trim(),
+                exist_account_type: existLoginDriver.val()
+            };
+            console.log(existLoginData.exist_account_type);
+
+            $.ajax({
+                method: "POST",
+                url: "/api/login/" + existLoginData.exist_account_type + "/" + existLoginData.exist_login_username
+            }).then(function (data) {
+                console.log(data);
+
+            });
+        }
 
     });
 
 
-    
+
 
 
 </script>
-
-

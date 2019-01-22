@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    console.log("hello");
     $(document).on("click", ".accept-btn", function (event) {
         event.preventDefault();
         console.log(this);
