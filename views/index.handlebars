@@ -9,10 +9,10 @@
             <label for="password">Password: </label>
             <input type="text" class="form-control" id="password">
             <br>
-            <select style="all:unset;color:#FFF;" name="account" id="accountType">
+            {{!-- <select style="all:unset;color:#FFF;" name="account" id="accountType">
                 <option style="all:unset;" value="customer">Customer Login</option>
                 <option style="all:unset;" value="driver">Driver Login</option>
-            </select>
+            </select> --}}
             <button type="submit" class="tile success submit" style="left:30%;">Login</button>
 
             {{!-- SENDS DIRECTLY TO REQUESTS, NO WAY TO ADD VALIDATORS YET --}}
@@ -106,7 +106,7 @@
 
             $.ajax({
                 method: "POST",
-                url: "/api/login/" + existLoginData.exist_account_type + "/" + existLoginData.exist_login_username
+                url: "/api/login/" + existLoginData.exist_account_type + "/" + existLoginData.exist_login_username + "/" + existLoginData.exist_login_password
             }).then(function (data) {
                 console.log(data);
 
@@ -133,7 +133,7 @@
 
             $.ajax({
                 method: "POST",
-                url: "/api/login/" + existLoginData.exist_account_type + "/" + existLoginData.exist_login_username
+                url: "/api/login/" + existLoginData.exist_account_type + "/" + existLoginData.exist_login_username + "/" + existLoginData.exist_login_password
             }).then(function (data) {
                 console.log(data);
 
