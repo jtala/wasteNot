@@ -19,11 +19,18 @@ router.get("/index", function(req, res) {
 
 //  ----------------------- Logins
 
-// Injects login information onto Customers table & reroutes to requests.
+// Injects login information onto customers table && requests table.
 router.post("/api/login", function (req, res) {
-  db.Customer.create(req.body)
-  .then()
+  db.Customer.create(req.body);
+  db.Request.create({
+    customer: req.body.username
+  })
+  .then(function(dbLogins) {
+    res.json(dbLogins);
+  });
 });
+
+
 
 // Going to this url shows JSON of all the login information
 router.get("/api/login", function (req, res) {
@@ -77,7 +84,12 @@ router.get("/api/requests", function (req, res) {
 
 // Injects customer input onto requests table.
 router.post("/api/requests", function (req, res) {
-  db.Request.create(req.body);
+
+  db.Request.update(req.body,{
+    where: {
+      id: 1
+    }
+  });
 });
 
 

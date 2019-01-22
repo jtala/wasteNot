@@ -9,9 +9,17 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false
     }
   },
+
   {
     timestamps: false
   }
   );
+
+   Customer.associate = function(models) {
+
+    // Customer will be associated with a request
+    Customer.hasMany(models.Request, {
+    });
+  };
   return Customer;
 };
