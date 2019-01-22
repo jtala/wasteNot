@@ -20,7 +20,7 @@
 {{!--     Username here when ready --}}    
     <h2>Recycling Service in the next 10 minutes.</h2>
     <div id="instructions">
-    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias illum nesciunt eos quas deserunt aliquid, officia doloremque corporis esse neque. Nesciunt sequi ipsam ratione possimus temporibus minus officia dolorem nobis.</p>
+    <p>Tell us what, where, and weight of the trash and a driver will be on the way soon. </p>
      <br><br>
     </div>
 </div>
@@ -94,7 +94,9 @@ function handleFormSubmit(event) {
     event.preventDefault();
     // Will not submit unless every field has data.
     if (!cItemName.val().trim() || !cEstWeight.val() || !cItemLocation.val() ) {
+      alert("One of the fields is empty! Please fill out all the forms before you submit.")
       return;
+      
     }
     // Take data from form & make a new object for database to read.
     var newCustomer = {

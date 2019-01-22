@@ -7,7 +7,7 @@
             <input type="text" class="form-control" id="userName">
             <br>
             <label for="password">Password: </label>
-            <input type="text" class="form-control" id="password">
+            <input type="password" class="form-control" id="password">
             <br>
             <button type="submit" class="tile success submit" style="left:30%;">sign up as customer</button>
             <button type="submit" class="btn btn success submit" onclick="window.location.href = '/requests';">sign up as driver</button>
@@ -22,7 +22,7 @@
         <input type="text" class="form-control" id="existUserName">
         <br>
         <label for="existPassword">Password: </label>
-        <input type="text" class="form-control" id="existPassword">
+        <input type="password" class="form-control" id="existPassword">
         <br>
     </div>
 </form>
@@ -54,6 +54,7 @@
 
             // If empty don't submit.
             if (!userName.val().trim() || !password.val().trim()) {
+                alert("One of the fields is empty! Please fill out all the forms before you submit.")
                 return;
             }
             // Create object to send to backend,
