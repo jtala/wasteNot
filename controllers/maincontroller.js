@@ -98,13 +98,13 @@ router.post("/api/requests", function (req, res) {
 
 
 // adding route to take to tracking page
-router.post("/api/login/:accountType/:username", function (req, res) {
+router.post("/api/login/:accountType/:username/:password", function (req, res) {
   var accountType = req.params.accountType;
 
 
-
-  console.log(req.params.username);
-  console.log(req.params.accountType);
+// console.log(req.params.password);
+//   console.log(req.params.username);
+//   console.log(req.params.accountType);
   
 
 
@@ -115,8 +115,11 @@ router.post("/api/login/:accountType/:username", function (req, res) {
         username: req.params.username
       }
     }).then(function(data) {
-      console.log(data);
-      res.json(data);
+      console.log(data.dataValues);
+      if (req.params.password === data.dataValues.password){
+        console.log("login succesful");
+        res.json(data);
+      }
     });
 
   } else if (accountType === "Driver") {
