@@ -65,4 +65,34 @@
         {{/unless}}
         {{/each}}
     </table>
+
+    <h3>Canceled Requests</h3>
+    <table>
+        <tr>
+            <th>Customer Name</th>
+            <th>Customer Location</th>
+            <th>Item</th>
+            <th>Estimated Weight</th>
+            <th>Request Status</th>
+        </tr>
+        {{#each requests}}
+        {{#if is_complete}}
+        <tr>
+            <td>{{this.customer}}</td>
+            <td>{{this.location}}</td>
+            <td>{{this.item}}</td>
+            <td>{{this.weight}}</td>
+            <td>
+              {{#if this.status}}
+                <p>Accepted</p>
+                {{else}}
+                <p>Not yet accepted</p>
+                {{/if}}
+            </td>
+        </tr>
+        {{/if}}
+        {{/each}}
+    </table>
+</div>
+
 </div>

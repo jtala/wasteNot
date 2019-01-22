@@ -38,7 +38,7 @@
         <input placeholder="Los Angeles" type="text" class="form-control" id="item_location">
 
         <br/>
-        <button type="submit" class="submit tile">Submit</button>
+        <button type="submit" id="submit" class="submit tile">Submit</button>
     </div>
 </form>
 
@@ -48,31 +48,65 @@
     <h2>Requests On The Way</h2>
 
     <table>
-  <tr>
-    <th>Your Drivers' Name</th>
-    <th>Items</th>
-    <th>Location</th>
-    <th>Weight</th>
-    <th>Status</th>
-  </tr>
-{{!-- Run Handlebars for loop here once driver side is done --}}
-{{#each requests}}
-{{/each}}
-</table>
-    
+        <tr>
+            <th>Customer Name</th>
+            <th>Customer Location</th>
+            <th>Item</th>
+            <th>Estimated Weight</th>
+            <th>Request Status</th>
+        </tr>
+        {{#each requests}}
+        {{#unless is_complete}}
+        <tr>
+            <td>{{this.customer}}</td>
+            <td>{{this.location}}</td>
+            <td>{{this.item}}</td>
+            <td>{{this.weight}}</td>
+            <td>
+              {{#if this.status}}
+                <p>Accepted</p>
+                {{else}}
+                <p>Not yet accepted</p>
+                {{/if}}
+            </td>
+            {{#unless this.is_complete}}
+            <td>
+                <button class="cancel-btn" id={{this.id}} >Cancel Request</button>
+            </td>
+            {{/unless}}
+        </tr>
+        {{/unless}}
+        {{/each}}
+    </table>
+
+    <h2>Canceled Requests</h2>
+    <table>
+        <tr>
+            <th>Customer Name</th>
+            <th>Customer Location</th>
+            <th>Item</th>
+            <th>Estimated Weight</th>
+            <th>Request Status</th>
+        </tr>
+        {{#each requests}}
+        {{#if is_complete}}
+        <tr>
+            <td>{{this.customer}}</td>
+            <td>{{this.location}}</td>
+            <td>{{this.item}}</td>
+            <td>{{this.weight}}</td>
+            <td>
+              {{#if this.status}}
+                <p>Accepted</p>
+                {{else}}
+                <p>Not yet accepted</p>
+                {{/if}}
+            </td>
+        </tr>
+        {{/if}}
+        {{/each}}
+    </table>
 </div>
-
-<br><br>
-
-
-
-<div id="logs">
-<button type="submit" class="btn btn-success submit">See logs</button>
-</div>
-
-<br><br>
-
-<div class="loader"></div>
 
 
 
@@ -87,7 +121,7 @@ var cmsForm = $("#cms");
 
 
 // On click listener for when customer submits form.
-$(cmsForm).on("submit", handleFormSubmit);
+$("#submit").on("click", handleFormSubmit);
 
 // Function prevents empty slots, creates an object with customer's data & posts it to the backend. Can be seen in the requests db.
 function handleFormSubmit(event) {
@@ -110,8 +144,13 @@ function handleFormSubmit(event) {
   }
 
 function submitCustomer (post){
-    $.post("/api/requests", post, function() {
-    console.log("New request data has been posted!");
+  var request_id = $(this).attr("id");
+    $.ajax({
+      method: "POST",
+      url: "/api/request/" + request_id
+    }).then(function (data) {
+      console.log(data);
+    });
 });
 }
 });
