@@ -1,0 +1,100 @@
+*
+    position: relative
+    
+
+body
+    background-color: #333333
+    font-family: $main-font,
+    background-image: url("../assets/img/593421.jpg")
+    background-position: center
+    background-blend-mode: overlay
+
+nav
+    .brand-logo
+        padding: 0 0 0 1%
+
+h2, h4
+    text-align: center
+    color: $my-grey
+    width: 100%
+    padding: 3%
+    margin: 0%
+    
+    
+.jumboForm
+    width: 70%
+    margin: 5% auto
+    border-radius: 30px
+    padding: 2%
+    background-color: rgba(0,0,0,0.5)
+
+div
+    width: 100%
+    
+
+
+.data
+    margin: 1% auto
+    width: 30%
+    text-align: center
+    background-color: $primary-color-light
+    border-radius: 20px
+
+
+#cms
+    text-align:  center
+    
+.form-control
+    text-align: center
+    
+
+#logs
+    text-align: center
+    
+
+#loading 
+    width: 100%
+    
+
+// Styles.
+.tiles 
+    left: 50%
+    position: absolute
+    top: 50%
+    transform: translateY(-50%) translateX(-50%)
+    width: 330px
+
+
+.tile 
+    animation: 1s ease 0s pulse infinite
+    background: $tile-bg
+    border-radius: 4px
+    float: left
+    height: 75px
+    margin: 5px
+    width: 100px
+
+
+// Loop from 1-9.
+@for $i from 1 through 9 
+    .tile:nth-child(#{$i}) 
+      
+        // Delay the animation. Delay increases as items loop.
+        animation-delay: $i * (1s / 18)
+    
+
+@keyframes pulse 
+    0% 
+        background: $tile-bg
+        transform: scale(1)
+    
+    
+    25% 
+        background: darken($tile-bg, 10%)
+        transform: scale(1.015)
+    
+    
+    50% 
+        background: $tile-bg
+        transform: scale(1)
+    
