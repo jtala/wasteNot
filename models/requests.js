@@ -1,42 +1,47 @@
 module.exports = function (sequelize, DataTypes) {
+    
     var Request = sequelize.define("Request", {
         customer: {
             type: DataTypes.STRING,
-        },
+        }, 
         driver: {
             type: DataTypes.STRING,
         },
         location: {
             type: DataTypes.STRING,
-            allowNull: false
+            /* allowNull: false */
         },
         item: {
             type: DataTypes.STRING,
-            allowNull: false
+            /* allowNull: false */
         },
         weight: {
             type: DataTypes.STRING,
-            allowNull: false
+            /* allowNull: false */
         },
         status: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            /* allowNull: false */
             defaultValue: 0
         },
         is_complete: {
             type: DataTypes.BOOLEAN,
-        }
+            defaultValue: false
+        },
     },
     {
         timestamps: false
     }
-    );
-    
+);
+
+Request.associate = function(models) {
+    // Request must belong to a Customer
+    Request.belongsTo(models.Customer, {
+        foreignKey: {
+            allowNull: true
+          }
+    });
+  }; 
+
     return Request;
 };
-
-/* is_complete: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-            defaultValue: false
-        } */

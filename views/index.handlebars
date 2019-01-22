@@ -55,27 +55,32 @@
         // To either insert into Customers or Drivers table depending on accountType selection. Right now everything is going to Customers table.
         var accountType = $("#accountType");
 
+<<<<<<< HEAD
 
         $("#login").on("submit", userLogin);
 
         function userLogin(event) {
             event.preventDefault();
 
+=======
+        $(login).on("submit", userLogin);
+
+        function userLogin(event) {
+            event.preventDefault();
+>>>>>>> mondayLogin
             // If empty don't submit.
             if (!userName.val().trim() || !password.val().trim()) {
                 return;
             }
-
             // Create object to send to backend,
             var loginData = {
                 username: userName.val().trim(),
                 password: password.val().trim(),
             };
-
             console.log(loginData);
             //sending to back end
             submitLogin(loginData);
-
+            window.location.href = '/requests';
         }
 
         function submitLogin(post) {
