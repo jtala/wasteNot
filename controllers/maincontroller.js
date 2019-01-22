@@ -10,10 +10,10 @@ var db = require("../models");
 
 router.get("/", function (req, res) {
   res.render("home");
-  
+
 });
 
-router.get("/index", function(req, res) {
+router.get("/index", function (req, res) {
   res.render("index");
 });
 
@@ -24,8 +24,7 @@ router.post("/api/login", function (req, res) {
   db.Customer.create(req.body);
   db.Request.create({
     customer: req.body.username
-  })
-  .then(function(dbLogins) {
+  }).then(function (dbLogins) {
     res.json(dbLogins);
   });
 });
@@ -45,7 +44,7 @@ router.get("/drive", function (req, res) {
 router.put("/drive/update/:id", function (req, res) {
   db.Request.update({
     status: true
-  },{
+  }, {
       where: {
         id: req.params.id
       }
@@ -58,7 +57,28 @@ router.put("/drive/update/:id", function (req, res) {
 //  ----------------------- Requests 
 
 router.get("/requests", function (req, res) {
-  res.render("requests");
+  db.Request.findAll().then(function (data) {
+    var hbsObject = {
+      requests: data
+    };
+    res.render("requests", hbsObject);
+  });
+
+});
+
+router.put("/requests/update/:id", function (req, res) {
+  console.log("worked");
+  db.Request.update({
+    is_complete: true
+  }, {
+      where: {
+        id: req.params.id
+      }
+    }).then(function (data) {
+      // is this the correct way of displaying data
+      console.log(data);
+      res.json(data);
+    });
 });
 
 
@@ -73,7 +93,7 @@ router.get("/api/requests", function (req, res) {
 // Injects customer input onto requests table.
 router.post("/api/requests", function (req, res) {
 
-  db.Request.update(req.body,{
+  db.Request.update(req.body, {
     where: {
       id: 1
     }
@@ -91,10 +111,10 @@ router.post("/api/login/:accountType/:username/:password", function (req, res) {
   var accountType = req.params.accountType;
 
 
-// console.log(req.params.password);
-//   console.log(req.params.username);
-//   console.log(req.params.accountType);
-  
+  // console.log(req.params.password);
+  //   console.log(req.params.username);
+  //   console.log(req.params.accountType);
+
 
 
   if (accountType === "Customer") {
@@ -116,13 +136,17 @@ router.post("/api/login/:accountType/:username/:password", function (req, res) {
     });
 
   } else if (accountType === "Driver") {
-    
-    db.Driver.findOne({
+
+    db.Customer.findOne({
       where: {
         username: req.params.username
       }
-    }).then(function(data) {
-      res.json(data);
+    }).then(function (data) {
+      console.log(data.dataValues);
+      if (req.params.password === data.dataValues.password) {
+        console.log("login succesful");
+        res.json(data);
+      }
     });
   }
 });

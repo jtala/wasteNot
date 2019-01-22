@@ -6,6 +6,7 @@ module.exports = function (sequelize, DataTypes) {
         }, 
         driver: {
             type: DataTypes.STRING,
+            allowNull: true
         },
         location: {
             type: DataTypes.STRING,
@@ -20,7 +21,7 @@ module.exports = function (sequelize, DataTypes) {
             /* allowNull: false */
         },
         status: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.BOOLEAN,
             /* allowNull: false */
             defaultValue: 0
         },
@@ -34,14 +35,14 @@ module.exports = function (sequelize, DataTypes) {
     }
 );
 
-Request.associate = function(models) {
-    // Request must belong to a Customer
-    Request.belongsTo(models.Customer, {
-        foreignKey: {
-            allowNull: true
-          }
-    });
-  }; 
+// Request.associate = function(models) {
+//     // Request must belong to a Customer
+//     Request.belongsTo(models.Customer, {
+//         foreignKey: {
+//             allowNull: true
+//           }
+//     });
+//   }; 
 
     return Request;
 };

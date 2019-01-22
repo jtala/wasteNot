@@ -15,11 +15,11 @@ module.exports = function (sequelize, DataTypes) {
   }
   );
 
-   Customer.associate = function(models) {
+  //  Customer.associate = function(models) {
 
-    // Customer will be associated with a request
-    Customer.hasMany(models.Request, {
-    });
-  };
+  //   // Customer will be associated with a request
+  //   Customer.hasMany(models.Request, {
+  //   });
+  // };
   return Customer;
 };
