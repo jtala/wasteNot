@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
 /* PLUGINS */
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
 .materialize-red {
   background-color: #e51c23 !important; }
 
@@ -3629,7 +3629,7 @@ small {
       overflow: hidden;
       transition: color .28s ease, background-color .28s ease; }
       .tabs .tab a:focus, .tabs .tab a:focus.active {
-        background-color: rgba(126, 213, 111, 0.2);
+        background-color: rgba(89, 251, 178, 0.2);
         outline: none; }
       .tabs .tab a:hover, .tabs .tab a.active {
         background-color: transparent;
@@ -3641,7 +3641,7 @@ small {
     position: absolute;
     bottom: 0;
     height: 2px;
-    background-color: #7ed56f;
+    background-color: #59FBB2;
     will-change: left, right; }
 
 @media only screen and (max-width: 992px) {
@@ -6457,11 +6457,12 @@ body {
   background-blend-mode: overlay; }
 
 nav .brand-logo {
-  padding: 0 0 0 1%; }
+  padding: 0 0 1% 2%; }
 
 h2, h4 {
-  text-align: center;
-  color: #9e9e9e;
+  text-align: justify;
+  text-justify: inter-word;
+  color: #BCBCBC;
   width: 100%;
   padding: 3%;
   margin: 0%; }
@@ -6471,6 +6472,7 @@ h2, h4 {
   margin: 5% auto;
   border-radius: 30px;
   padding: 2%;
+  color: #FFF;
   background-color: rgba(0, 0, 0, 0.5); }
 
 div {
@@ -6480,7 +6482,7 @@ div {
   margin: 1% auto;
   width: 30%;
   text-align: center;
-  background-color: #7ed56f;
+  background-color: #59FBB2;
   border-radius: 20px; }
 
 #cms {
@@ -6488,6 +6490,9 @@ div {
 
 .form-control {
   text-align: center; }
+
+p, label {
+  color: #FFF; }
 
 #logs {
   text-align: center; }
@@ -6504,12 +6509,26 @@ div {
 
 .tile {
   animation: 1s ease 0s pulse infinite;
-  background: #cfcfdf;
+  background: #16BA70;
   border-radius: 4px;
-  float: left;
+  border: none;
+  color: #FFF;
+  display: block;
   height: 75px;
-  margin: 5px;
-  width: 100px; }
+  margin: 5px auto;
+  width: 100px;
+  font-family: "Roboto Mono", monospace; }
+
+.brand-logo {
+  width: 30%;
+  transition: all 1s ease; }
+  .brand-logo img {
+    width: 45%;
+    margin-bottom: 1%; }
+
+.brand-logo:hover {
+  filter: brightness(9);
+  -webkit-filter: drop-shadow(5px 5px 5px #222); }
 
 .tile:nth-child(1) {
   animation-delay: 0.0555555556s; }
@@ -6540,14 +6559,34 @@ div {
 
 @keyframes pulse {
   0% {
-    background: #cfcfdf;
+    background: #16BA70;
     transform: scale(1); }
   25% {
-    background: #b0b0cb;
+    background: #118c55;
     transform: scale(1.015); }
   50% {
-    background: #cfcfdf;
+    background: #16BA70;
     transform: scale(1); } }
+.nav-wrapper {
+  background-color: #16BA70; }
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #3498db;
+  border-radius: 50%;
+  width: 120px;
+  margin: 0 auto;
+  height: 120px;
+  animation: spin 2s linear infinite; }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+#currentRequests {
+  color: #FFF; }
+
 /* LAYOUTS */
 /* MODULES */
 

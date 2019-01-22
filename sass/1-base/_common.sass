@@ -1,20 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono')
+
+
 *
     position: relative
     
 
 body
     background-color: #333333
-    font-family: $main-font,
+    font-family: $main-font
     background-image: url("../assets/img/593421.jpg")
     background-position: center
     background-blend-mode: overlay
 
 nav
     .brand-logo
-        padding: 0 0 0 1%
+        padding: 0 0 1% 2%
 
 h2, h4
-    text-align: center
+    text-align: justify
+    text-justify: inter-word
     color: $my-grey
     width: 100%
     padding: 3%
@@ -26,6 +30,7 @@ h2, h4
     margin: 5% auto
     border-radius: 30px
     padding: 2%
+    color: #FFF
     background-color: rgba(0,0,0,0.5)
 
 div
@@ -46,6 +51,9 @@ div
     
 .form-control
     text-align: center
+
+p, label
+    color: #FFF
     
 
 #logs
@@ -69,11 +77,29 @@ div
     animation: 1s ease 0s pulse infinite
     background: $tile-bg
     border-radius: 4px
-    float: left
+    border: none
+    color: #FFF
+    display: block
     height: 75px
-    margin: 5px
+    margin: 5px auto
     width: 100px
+    font-family: $main-font
 
+
+.brand-logo
+    width: 30%
+    transition: all 1s ease
+
+    img
+        width: 45%
+        margin-bottom: 1%
+
+.brand-logo:hover
+    filter: brightness(9)
+    -webkit-filter: drop-shadow(5px 5px 5px #222)
+
+
+    
 
 // Loop from 1-9.
 @for $i from 1 through 9 
@@ -98,3 +124,24 @@ div
         background: $tile-bg
         transform: scale(1)
     
+.nav-wrapper
+    background-color: $tile-bg
+
+
+.loader 
+    border: 16px solid #f3f3f3
+    border-top: 16px solid #3498db
+    border-radius: 50%
+    width: 120px
+    margin: 0 auto
+    height: 120px
+    animation: spin 2s linear infinite
+    
+@keyframes spin 
+    0%
+        transform: rotate(0deg) 
+    100%
+        transform: rotate(360deg)
+
+#currentRequests
+    color: #FFF

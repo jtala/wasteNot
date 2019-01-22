@@ -1,21 +1,4 @@
-<style>
-  .loader {
-  border: 16px solid #f3f3f3;
-  border-top: 16px solid #3498db; 
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-</style>
-<button onclick="window.location.href = '/';">Home</button>
-<br>
-<br>
+<div class="jumboForm">
 <div class="welcome">
 {{!--     Username here when ready --}}    
     <h2>Recycling Service in the next 10 minutes.</h2>
@@ -41,9 +24,10 @@
         <button type="submit" class="submit tile">Submit</button>
     </div>
 </form>
-
+</div>
 <br><br>
 
+<div class="jumboForm">
 <div id="currentRequests">
     <h2>Requests On The Way</h2>
 
@@ -67,14 +51,14 @@
 
 
 <div id="logs">
-<button type="submit" class="btn btn-success submit">See logs</button>
+<button type="submit" class="tile submit">Logs</button>
 </div>
 
 <br><br>
 
 <div class="loader"></div>
 
-
+</div>
 
 <script>
  $(document).ready(function() {
