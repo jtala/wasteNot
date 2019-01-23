@@ -9,12 +9,13 @@
             <label for="password">Password: </label>
             <input type="password" class="form-control" id="password">
             <br>
-            <button type="submit" class="tile success submit" style="left:30%;">sign up as customer</button>
-            <button type="submit" class="btn btn success submit" onclick="window.location.href = '/requests';">sign up as driver</button>
+            <button style="display: inline-block;" type="submit" class="tile success submit">Sign up customer</button>
+            <button style="display: inline-block;" type="submit" class="tile success submit" onclick="window.location.href = '/requests';">Sign up driver</button>
         </div>
     </form>
 </div>
 
+<div class="jumboForm">
 <h4>Login</h4>
 <form>
     <div class="form-group">
@@ -30,10 +31,10 @@
 <hr>
 <hr>
 
-<button id="existLoginCustomer" class="login-btn" value="Customer" >Log in as a Customer</button>
+<button style="display: inline-block;" id="existLoginCustomer" class="login-btn tile" value="Customer" >Log in Customer</button>
 
-<button id="existLoginDriver" class="login-btn" value="Driver" >Log in as a Driver</button>
-
+<button style="display: inline-block;" id="existLoginDriver" class="login-btn tile" value="Driver" >Log in Driver</button>
+</div>
 <script>
     // Getting username & pw to database.
     $(document).ready(function () {

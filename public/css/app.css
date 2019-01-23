@@ -6488,8 +6488,13 @@ div {
 #cms {
   text-align: center; }
 
-.form-control {
+.form-control  {
   text-align: center; }
+
+input[type=text]{
+    color: white;
+  }
+
 
 p, label {
   color: #FFF; }
@@ -6586,6 +6591,8 @@ p, label {
     transform: rotate(360deg); } }
 #currentRequests {
   color: #FFF; }
+
+
 
 /* LAYOUTS */
 /* MODULES */
