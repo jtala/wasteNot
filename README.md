@@ -19,7 +19,7 @@ WasteNot is a waste logistics application in which users arrange for trash/recyc
 <br>
 
 <p align="center">
-    <img src="https://user-images.githubusercontent.com/120485/43994697-62e2bdc2-9d99-11e8-94fc-021ab9756f33.gif" width="800" />
+    <div style="width:100%;height:0;padding-bottom:63%;position:relative;"><iframe src="https://giphy.com/embed/aCylhgC46z3n283q2I" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/aCylhgC46z3n283q2I">via GIPHY</a></p>
 </p>
 
 
@@ -29,6 +29,7 @@ WasteNot is a waste logistics application in which users arrange for trash/recyc
 # Creating an account
 
 Depending on the type of account that is created, a different form will be displayed upon hitting submit.
+Choose between the client side account or the driver side account.
 
 
 ```
@@ -61,7 +62,7 @@ $ ghost install
 # Developers
 
 * Jonathan Talavera (github.com/jtala)
-* Alejandro Pichado (github.com/Crisoforo)
+* Alejandro Pichardo (github.com/Crisoforo)
 * Kareem Al-Asmar (github.com/kareemalasmar)
 * Clint Forster (github.com/clintForster)
 
