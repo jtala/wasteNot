@@ -18,6 +18,10 @@ WasteNot is a waste logistics application in which users arrange for trash/recyc
 
 <br>
 <p align="center"><img src="/public/assets/img/README_1.gif"/></p>
+
+# WasteNot!
+
+The Deployed App is available at: https://wastenotapp.herokuapp.com/
 &nbsp;
 
 # Creating an account
