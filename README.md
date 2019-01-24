@@ -38,25 +38,22 @@ Request:
 
 Logging in as a customer will prompt you to specify the weight, location, and type of item that you would like picked up.
 
+<p align="center"><img src="/public/assets/img/driver_login.png"/></p>
 
-```
-Show images of drivers' side here.
-```
-Logging in as a driver will show you all current 
+Logging in as a driver will show you all current requests
 
 
 &nbsp;
 
-```
-$ ghost install
-```
+<p align="center"><img src="/public/assets/img/driver_login_requests.png"/></p>
 
 &nbsp;
 
 
 
-# Logging Into an account
+# Technologies:
 
+Node.js, MySQL, Sass
 
 
 
