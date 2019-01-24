@@ -17,7 +17,7 @@ WasteNot is a waste logistics application in which users arrange for trash/recyc
 </p>
 
 <br>
-<img src="/public/assets/img/README_1.gif"/>
+<p align="center"><img src="/public/assets/img/README_1.gif"/></p>
 &nbsp;
 
 # Creating an account
