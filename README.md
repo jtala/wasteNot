@@ -29,10 +29,8 @@ The Deployed App is available at: https://wastenotapp.herokuapp.com/
 Depending on the type of account that is created, a different form will be displayed upon hitting submit.
 Choose between the client side account or the driver side account.
 
+<p align="center"><img src="/public/assets/img/customer_login.jpg"/></p>
 
-```
-Show images of customer login here.
-```
 Logging in as a customer will prompt you to specify the weight, location, and type of item that you would like picked up.
 
 
