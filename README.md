@@ -56,16 +56,15 @@ Logging in as a driver will show you all current requests and will give you the 
 
 &nbsp;
 
-```
-$ ghost install
-```
+<p align="center"><img src="/public/assets/img/driver_login_request.png"/></p>
 
 &nbsp;
 
 
 
-# Logging Into an account
+# Technologies
 
+Node.js, MySQL, Sass
 
 
 
