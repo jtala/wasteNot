@@ -45,7 +45,7 @@ Logging in as a driver will show you all current requests
 
 &nbsp;
 
-<p align="center"><img src="/public/assets/img/driver_login_requests.png"/></p>
+<p align="center"><img src="/public/assets/img/driver_login_request.png"/></p>
 
 &nbsp;
 
