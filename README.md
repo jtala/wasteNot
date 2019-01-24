@@ -51,7 +51,7 @@ Logging in as a driver will show you all current requests
 
 
 
-# Technologies:
+# Technologies
 
 Node.js, MySQL, Sass
 
