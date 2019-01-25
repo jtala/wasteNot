@@ -36,12 +36,10 @@ Choose between the client side account or the driver side account.
 
 ![Login Form](/public/assets/img/customer_login.png)
 
-<p align="center"><img src="/public/assets/img/customer_login.png"/></p>
 
 Request:
 
 
-<p align="center"><img src="/public/assets/img/customer_login_request.png"/></p>
 
 
 Logging in as a customer will prompt you to specify the weight, location, and type of item that you would like picked up.
