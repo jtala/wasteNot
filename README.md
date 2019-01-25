@@ -29,7 +29,7 @@ The Deployed App is available at: https://wastenotapp.herokuapp.com/
 &nbsp;
 
 # Creating an account
-![Home Page](/public/assets/img/README_1.gif)
+
 
 Depending on the type of account that is created, a different form will be displayed upon hitting submit.
 Choose between the client side account or the driver side account.
